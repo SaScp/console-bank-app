@@ -36,9 +36,6 @@ int main() {
                 cout << "Incorrect number" << endl;
             }
         }
-        cout << "*******************************CARDS***************************************"<<endl;
-        load( datebase);
-        cout << "***************************************************************************"<<endl;
         cout << "balance" << endl << "add" << endl << "update" <<endl<< "exit" <<endl;
         cin >> cmd;
     }
