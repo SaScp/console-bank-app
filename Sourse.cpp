@@ -23,14 +23,14 @@ int getDigitCount(long long card){
     return std::to_string(card).size();
 }
 bool isNumberCorrect(long long card){
-   return  (isLuhnCorrect(card) == true && getDigitCount(card) == 16? true : false);
+    return  (isLuhnCorrect(card) == true && getDigitCount(card) == 16? true : false);
 }
-void load(std::vector<long long> accounts){
+void load(std::vector<std::string> accounts){
     for (int i = 0; i < accounts.size(); ++i) {
         std::cout << accounts[i] << "\n";
     }
 }
-bool addAccount(long long card, std::vector<std::string> database){
+bool addAccount(long long card, std::vector<std::string> &database){
     if(isNumberCorrect(card)){
         std::string new_account = std::to_string(card) + ".txt";
         database.push_back(new_account);
@@ -38,19 +38,34 @@ bool addAccount(long long card, std::vector<std::string> database){
     }
     return 0;
 }
-int findAccount(long long card, std::vector<std::string>database){
+int findAccount(long long card, std::vector<std::string>&database){
     std::string new_account = std::to_string(card) + ".txt";
     for (int i = 0; i < database.size(); ++i) {
         if(database[i] == new_account){
             return i;
         }
     }
-  return -1;
+    return -1;
 }
 void save(std::vector<std::string> account,std::vector<std::fstream>&database){
     database.resize(account.size());
     for (int i = 0; i < database.size(); ++i) {
-    database[i].open(account[i] + "txt");
-    database[i].close();
+        database[i].open(account[i] + "txt");
+        database[i].close();
+    }
+}
+int getBalance(long long card,std::vector<std::string>&database,std::vector<std::fstream>&datafilebase){
+    std::string cards = std::to_string(card) + ".txt";
+    std::string dataout;
+    for (int i = 0; i < database.size(); ++i) {
+        if(database[i] == cards){
+            std::cout << "********************************************"<<"\n";
+            datafilebase[i].open(cards);
+            while(!datafilebase[i].eof()) {
+                datafilebase[i] >> dataout;
+                std::cout << dataout << "\n";
+            }
+            std::cout << "********************************************"<<"\n";
+        }
     }
 }
