@@ -1,11 +1,12 @@
 #pragma once
 #include <bits/stdc++.h>
-int getDigitCount(long long);
-bool isLuhnCorrect(long long);
-bool isNumberCorrect(long long);
-void load(std::vector<std::string>);
-void save(std::vector<std::string>,std::vector<std::fstream>&);
-int findAccount(long long, std::vector<std::string>&);
-bool addAccount(long long, std::vector<std::string>&);
-int getBalance(long long,std::vector<std::string>&,std::vector<std::fstream>&);
-void balanceReplenishment(long long, int);
+int getDigitCount(long long);//ok
+bool isLuhnCorrect(long long);//ok
+bool isNumberCorrect(long long);//ok
+void load(std::vector<std::string>&);//ok
+void save(std::vector<std::string>&);//no
+int findAccount(long long, std::vector<std::string>&);//ok
+bool addAccount(long long,std::vector<std::string>&database);// ok
+int getBalance(long long,std::vector<std::string> &);//no
+void balanceReplenishment(long long, int);//no
+

@@ -1,29 +1,27 @@
 #include "header.h"
 using namespace std;
 int main() {
-    vector<fstream> datafilebase;
     vector<string> datebase;
-    if(!datebase.empty())
-        load(datebase);
+    cout << "*******************************CARDS***************************************"<<endl;
+    load( datebase);
+    cout << "***************************************************************************"<<endl;
     string cmd;
-    cout << " balance""\n"
-            "add\n"
-            "update\n"
-            "exit\n"<<endl;
-
+    cout << "balance" << endl << "add" << endl << "update" <<endl<< "exit" <<endl;
     cin >> cmd;
     while (cmd != "exit") {
         long long account;
         cin >> account;
         if (cmd == "balance") {
             if (isNumberCorrect(account) && findAccount(account, datebase) != -1) {
-                cout << getBalance(account,datebase,datafilebase) << endl;
-            } else cout << "Incorrect number" << endl;
+                cout <<"your balancr:" << getBalance(account,datebase) << endl;
+            }
+            else cout << "Incorrect number" << endl;
         }
         if (cmd == "add") {
             if (addAccount(account, datebase)) {
                 cout << "Done!" << endl;
-            } else {
+            }
+            else {
                 cout << "Incorrect number" << endl;
             }
         }
@@ -34,10 +32,17 @@ int main() {
                 balanceReplenishment(account, delta);
                 cout << "Done!" << endl;
             }
-            cin >> cmd;
+            else {
+                cout << "Incorrect number" << endl;
+            }
         }
+        cout << "*******************************CARDS***************************************"<<endl;
+        load( datebase);
+        cout << "***************************************************************************"<<endl;
+        cout << "balance" << endl << "add" << endl << "update" <<endl<< "exit" <<endl;
+        cin >> cmd;
     }
-    save(datebase,datafilebase);
+    save(datebase);
     cout << "Bye!";
     return 0;
 }
