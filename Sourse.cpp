@@ -47,9 +47,10 @@ int findAccount(long long card, std::vector<std::string>database){
     }
   return -1;
 }
-void save(std::vector<std::string> account){
-    std::vector<std::fstream> database(account.size());
+void save(std::vector<std::string> account,std::vector<std::fstream>&database){
+    database.resize(account.size());
     for (int i = 0; i < database.size(); ++i) {
-
+    database[i].open(account[i] + "txt");
+    database[i].close();
     }
 }

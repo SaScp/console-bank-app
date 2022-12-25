@@ -2,10 +2,15 @@
 #include "header.h"
 using namespace std;
 int main() {
-
+    vector<fstream> datafilebase;
     vector<string> datebase;
     load(datebase);
     string cmd;
+    cout << " balance""\n"
+                      "add\n"
+                      "update\n"
+                      "exit\n"<<endl;
+
     cin >> cmd;
     while (cmd != "exit") {
         long long account;
@@ -37,7 +42,7 @@ int main() {
         }
         cin >> cmd;
     }
-    save(datebase);
+    save(datebase,datafilebase);
     cout << "Bye!";
     return 0;
 }
